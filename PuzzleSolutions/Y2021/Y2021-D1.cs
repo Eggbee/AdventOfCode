@@ -28,7 +28,23 @@ namespace PuzzleSolutions.Y2021
 
         public static string SolvePart2()
         {
-            return "I Haven't Solved part 2 yet!";
+            List<int> puzzleInput = MyIO.ReadIntsFromFile(2021, 1, 1);
+            var increaseCount = 0;
+            for (int i = 0; i < puzzleInput.Count - 3; i++)
+            {
+                var sum = puzzleInput[i] + puzzleInput[i + 1] + puzzleInput[i + 2];
+                var nextSum = puzzleInput[i + 1] + puzzleInput[i + 2] + puzzleInput[i + 3];
+                if (sum < nextSum)
+                {
+                    Console.WriteLine($"{sum} (increased)");
+                    increaseCount++;
+                }
+                else
+                {
+                    Console.WriteLine($"{sum} (decreased)");
+                }
+            }
+            return $"{increaseCount}";
         }
     }
 }
